@@ -29,7 +29,12 @@
     "env-list": "./scripts/environment-manager.sh list",
     "wizard": "./scripts/preferences-wizard.sh",
     "quick-setup": "./scripts/quick-setup.sh",
-    "integrations": "./scripts/integration-helper.sh"
+    "integrations": "./scripts/integration-helper.sh",
+    "performance": "node ./scripts/performance-monitor.js",
+    "analytics": "./scripts/usage-analytics.sh",
+    "optimize": "./scripts/optimization-engine.sh",
+    "benchmark": "./scripts/optimization-engine.sh benchmark",
+    "analyze": "./scripts/optimization-engine.sh analyze"
   },
   "keywords": [
     "claude-code",
