@@ -19,7 +19,14 @@
     "doctor": "node scripts/doctor.js",
     "health": "npm run doctor",
     "fix-permissions": "chmod +x scripts/*.sh hooks/*",
-    "update-all": "npm run sync && npm run validate && npm run doctor"
+    "update-all": "npm run sync && npm run validate && npm run doctor",
+    "backup": "./scripts/backup-preferences.sh",
+    "restore": "./scripts/backup-preferences.sh restore",
+    "auto-update": "./scripts/auto-update.sh",
+    "env": "./scripts/environment-manager.sh",
+    "env-create": "./scripts/environment-manager.sh create",
+    "env-switch": "./scripts/environment-manager.sh switch",
+    "env-list": "./scripts/environment-manager.sh list"
   },
   "keywords": [
     "claude-code",
