@@ -1,0 +1,36 @@
+{
+  "projectPaths": {
+    "personal": "/Users/shakeelbhamani/projects/personal",
+    "tmuxOrchestrator": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator",
+    "shaktechWebsite": "/Users/shakeelbhamani/projects/personal/shaktech-website",
+    "emailSender": "/Users/shakeelbhamani/projects/personal/email-sender",
+    "claudePreferences": "/Users/shakeelbhamani/projects/personal/claude-code-preferences",
+    "aiStockResearcher": "/Users/shakeelbhamani/projects/personal/ai-stock-researcher"
+  },
+  "tools": {
+    "monitoring": {
+      "script": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/claude-monitoring-mcp-client.py",
+      "commands": {
+        "detailed": "python3 {script}",
+        "quick": "python3 {script} --quick"
+      }
+    },
+    "screenshot": {
+      "script": "/Users/shakeelbhamani/projects/personal/shaktech-website/scripts/capture-screenshot.js",
+      "outputDir": "/Users/shakeelbhamani/projects/personal/shaktech-website/public/portfolio-screenshots",
+      "commands": {
+        "capture": "node {script} {url} {name}",
+        "portfolio": "npm run portfolio:screenshots"
+      }
+    },
+    "email": {
+      "projectDir": "/Users/shakeelbhamani/projects/personal/email-sender",
+      "description": "Email sending utility for all projects"
+    }
+  },
+  "globalSettings": {
+    "claudeMdPath": "/Users/shakeelbhamani/.claude/CLAUDE.md",
+    "platform": "darwin",
+    "shell": "/bin/bash"
+  }
+}

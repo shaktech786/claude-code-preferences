@@ -1,0 +1,50 @@
+{
+  "typescript": {
+    "enforceStrictMode": true,
+    "preferTypeScript": true,
+    "lintBeforeCommit": true,
+    "typecheckBeforeCommit": true,
+    "avoidAnyType": true,
+    "followExistingPatterns": true
+  },
+  "codeStyle": {
+    "addComments": false,
+    "preferEditOverCreate": true,
+    "followExistingConventions": true,
+    "useExistingLibraries": true,
+    "maintainConsistentNaming": true
+  },
+  "git": {
+    "requireExplicitCommitRequest": true,
+    "neverAutoCommit": true,
+    "alwaysVerifyBeforeCommit": true,
+    "includeClaudeSignature": true,
+    "signatureText": "🤖 Generated with Claude Code\\n\\nCo-Authored-By: Claude <noreply@anthropic.com>"
+  },
+  "testing": {
+    "alwaysRunTests": true,
+    "checkForTestCommands": true,
+    "suggestTestCommandsToClaudeMd": true,
+    "neverAssumeTestFramework": true
+  },
+  "fileManagement": {
+    "neverCreateUnnecessaryFiles": true,
+    "preferEditingExisting": true,
+    "neverCreateDocsProactively": true,
+    "onlyCreateWhenExplicitlyAsked": true
+  },
+  "security": {
+    "neverExposeSecrets": true,
+    "neverLogSensitiveData": true,
+    "neverCommitSecrets": true,
+    "followSecurityBestPractices": true
+  },
+  "responseStyle": {
+    "beADHDFriendly": true,
+    "beConcise": true,
+    "useVisualSeparators": true,
+    "breakComplexTasksIntoChunks": true,
+    "avoidUnnecessaryExplanations": true,
+    "noEmojisUnlessAsked": true
+  }
+}

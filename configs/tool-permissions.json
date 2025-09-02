@@ -1,0 +1,51 @@
+{
+  "allowedWithoutApproval": [
+    "Bash(npm outdated)",
+    "Bash(npm update)",
+    "Bash(npm run lint)",
+    "Bash(npm run build:*)",
+    "Bash(chmod:*)",
+    "Bash(npm run dev:*)",
+    "Bash(curl:*)",
+    "Bash(docker ps:*)",
+    "Bash(docker system:*)",
+    "Bash(docker volume:*)",
+    "Bash(git pull:*)",
+    "Bash(git add:*)",
+    "Bash(git commit:*)",
+    "Bash(git rebase:*)",
+    "Bash(defaults read:*)",
+    "Bash(grep:*)",
+    "Bash(ls:*)",
+    "Bash(find:*)",
+    "Bash(node:*)",
+    "Bash(npm --version)",
+    "Bash(npm install)",
+    "Bash(docker-compose:*)",
+    "Bash(npm run test:*)",
+    "Bash(mv:*)",
+    "WebSearch",
+    "Bash(git clone:*)",
+    "Bash(claude mcp add npm:*)",
+    "Bash(cat:*)",
+    "Bash(claude mcp:*)"
+  ],
+  "requiresApproval": [
+    "Bash(rm -rf)",
+    "Bash(sudo:*)",
+    "Bash(ssh:*)",
+    "Bash(scp:*)",
+    "Bash(rsync:*)",
+    "Bash(brew install:*)",
+    "Bash(pip install:*)",
+    "Bash(npm publish)",
+    "Bash(git push:*)"
+  ],
+  "serverCredentials": {
+    "ionos": {
+      "host": "74.208.195.168",
+      "user": "root",
+      "note": "Use sshpass for automated transfers when needed"
+    }
+  }
+}

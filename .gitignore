@@ -1,0 +1,45 @@
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+temp/
+tmp/
+
+# Sensitive data (just in case)
+*.env
+.env.*
+secrets/
+credentials/
+
+# Node modules (if any JS tools are added later)
+node_modules/
+
+# Python cache (for monitoring scripts)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Local overrides (user-specific)
+*.local
+local-overrides/
