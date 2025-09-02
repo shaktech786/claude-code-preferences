@@ -1,0 +1,59 @@
+{
+  "name": "claude-code-preferences",
+  "version": "1.0.0",
+  "description": "Centralized Claude Code preferences, settings, and tools for syncing across devices and projects",
+  "main": "install.sh",
+  "scripts": {
+    "install": "./install.sh",
+    "sync": "./scripts/project-sync.sh",
+    "check-teams": "./scripts/check-ai-teams.sh",
+    "screenshot": "./scripts/take-screenshot.sh",
+    "send-email": "./scripts/send-email.sh",
+    "message-claude": "./scripts/claude-messenger.sh",
+    "test-models": "./scripts/multi-model-test.sh",
+    "validate": "node scripts/validate-config.js",
+    "test": "npm run validate && npm run lint",
+    "lint": "shellcheck scripts/*.sh hooks/*",
+    "setup-hooks": "ln -sf ../../hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
+    "doctor": "node scripts/doctor.js"
+  },
+  "keywords": [
+    "claude-code",
+    "preferences",
+    "configuration",
+    "ai",
+    "development",
+    "automation",
+    "screenshots",
+    "monitoring"
+  ],
+  "author": "Shakeel Bhamani",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shaktech786/claude-code-preferences.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shaktech786/claude-code-preferences/issues"
+  },
+  "homepage": "https://github.com/shaktech786/claude-code-preferences#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "files": [
+    "CLAUDE.md",
+    "configs/",
+    "scripts/",
+    "templates/",
+    "hooks/",
+    "install.sh",
+    "README.md"
+  ]
+}

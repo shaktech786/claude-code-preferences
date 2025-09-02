@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# Claude Code Preferences Pre-Commit Hook
+# Validates configurations and runs basic checks
+
+echo "🔍 Running pre-commit checks..."
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+print_status() {
+    echo -e "${GREEN}✓${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}✗${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠${NC} $1"
+}
+
+# Check if we're in the right repository
+if [[ ! -f "CLAUDE.md" || ! -d "configs" || ! -d "scripts" ]]; then
+    print_error "This doesn't appear to be the claude-code-preferences repository"
+    exit 1
+fi
+
+# Validate JSON files
+echo "Validating JSON configuration files..."
+JSON_VALID=true
+
+for json_file in configs/*.json templates/*.template; do
+    if [[ -f "$json_file" && "$json_file" == *.json ]]; then
+        if ! python3 -m json.tool "$json_file" >/dev/null 2>&1; then
+            print_error "Invalid JSON: $json_file"
+            JSON_VALID=false
+        else
+            print_status "Valid JSON: $json_file"
+        fi
+    fi
+done
+
+if [[ "$JSON_VALID" != true ]]; then
+    print_error "JSON validation failed. Please fix the errors above."
+    exit 1
+fi
+
+# Check that all scripts are executable
+echo ""
+echo "Checking script permissions..."
+SCRIPTS_VALID=true
+
+for script in scripts/*.sh; do
+    if [[ -f "$script" ]]; then
+        if [[ ! -x "$script" ]]; then
+            print_warning "Making $script executable"
+            chmod +x "$script"
+        fi
+        print_status "Executable: $script"
+    fi
+done
+
+# Validate CLAUDE.md structure
+echo ""
+echo "Validating CLAUDE.md structure..."
+REQUIRED_SECTIONS=(
+    "Response Style"
+    "Development Practices" 
+    "AI TEAM MONITORING PROTOCOL"
+    "Web Screenshot & Scraping Tools"
+    "Project Paths & Locations"
+    "Tool Usage Policy"
+)
+
+CLAUDE_MD_VALID=true
+for section in "${REQUIRED_SECTIONS[@]}"; do
+    if ! grep -q "## .*$section" CLAUDE.md; then
+        print_error "Missing required section in CLAUDE.md: $section"
+        CLAUDE_MD_VALID=false
+    else
+        print_status "Found section: $section"
+    fi
+done
+
+if [[ "$CLAUDE_MD_VALID" != true ]]; then
+    print_error "CLAUDE.md validation failed. Please ensure all required sections are present."
+    exit 1
+fi
+
+# Check for sensitive information
+echo ""
+echo "Scanning for sensitive information..."
+SENSITIVE_FOUND=false
+
+# Common patterns to avoid
+SENSITIVE_PATTERNS=(
+    "password.*="
+    "secret.*="
+    "key.*="
+    "token.*="
+    "api.*key"
+    "ssh.*key"
+)
+
+for pattern in "${SENSITIVE_PATTERNS[@]}"; do
+    if git diff --cached --name-only | xargs grep -l -i "$pattern" 2>/dev/null; then
+        print_warning "Potential sensitive information found matching pattern: $pattern"
+        echo "Please review the files and ensure no secrets are being committed."
+        SENSITIVE_FOUND=true
+    fi
+done
+
+if [[ "$SENSITIVE_FOUND" == true ]]; then
+    echo ""
+    read -p "Continue with commit despite potential sensitive information? [y/N]: " -n 1 -r
+    echo ""
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        print_error "Commit aborted by user"
+        exit 1
+    fi
+fi
+
+print_status "All pre-commit checks passed!"
+echo ""
+exit 0

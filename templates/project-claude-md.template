@@ -1,0 +1,69 @@
+# Claude Code Project Configuration
+
+## 📋 Project Overview
+- **Name**: {{PROJECT_NAME}}
+- **Type**: {{PROJECT_TYPE}} (e.g., Next.js, Node.js, Python, etc.)
+- **Description**: {{PROJECT_DESCRIPTION}}
+
+## 🚀 Development Commands
+```bash
+# Development
+{{DEV_COMMAND}}                    # Start development server
+{{BUILD_COMMAND}}                  # Build for production
+{{START_COMMAND}}                  # Start production server
+
+# Testing
+{{TEST_COMMAND}}                   # Run tests
+{{TEST_WATCH_COMMAND}}             # Run tests in watch mode
+{{TEST_E2E_COMMAND}}               # Run E2E tests
+
+# Linting & Formatting  
+{{LINT_COMMAND}}                   # Lint code
+{{FORMAT_COMMAND}}                 # Format code
+{{TYPECHECK_COMMAND}}              # TypeScript type checking
+```
+
+## 🏗️ Project Structure
+```
+{{PROJECT_NAME}}/
+├── {{MAIN_DIRECTORIES}}
+└── {{KEY_FILES}}
+```
+
+## 🔧 Technology Stack
+- **Framework**: {{FRAMEWORK}}
+- **Language**: {{LANGUAGE}}
+- **Database**: {{DATABASE}}
+- **Styling**: {{STYLING}}
+- **Testing**: {{TESTING_FRAMEWORK}}
+- **Deployment**: {{DEPLOYMENT}}
+
+## ⚙️ Environment Variables
+```bash
+# Required
+{{REQUIRED_ENV_VARS}}
+
+# Optional
+{{OPTIONAL_ENV_VARS}}
+```
+
+## 🎯 Key Features
+- {{FEATURE_1}}
+- {{FEATURE_2}}
+- {{FEATURE_3}}
+
+## 📝 Development Notes
+- {{DEV_NOTE_1}}
+- {{DEV_NOTE_2}}
+- {{DEV_NOTE_3}}
+
+## 🚨 Common Issues & Solutions
+- **Issue**: {{COMMON_ISSUE_1}}
+  - **Solution**: {{SOLUTION_1}}
+
+## 📚 Additional Documentation
+- [{{DOC_LINK_1}}]({{DOC_URL_1}})
+- [{{DOC_LINK_2}}]({{DOC_URL_2}})
+
+---
+*Generated from claude-code-preferences template*
