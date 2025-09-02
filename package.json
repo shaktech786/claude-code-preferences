@@ -26,7 +26,10 @@
     "env": "./scripts/environment-manager.sh",
     "env-create": "./scripts/environment-manager.sh create",
     "env-switch": "./scripts/environment-manager.sh switch",
-    "env-list": "./scripts/environment-manager.sh list"
+    "env-list": "./scripts/environment-manager.sh list",
+    "wizard": "./scripts/preferences-wizard.sh",
+    "quick-setup": "./scripts/quick-setup.sh",
+    "integrations": "./scripts/integration-helper.sh"
   },
   "keywords": [
     "claude-code",
