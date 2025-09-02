@@ -116,7 +116,7 @@ chmod +x scripts/*.sh
 
 ```bash
 # Setup & Installation
-npm run install        # Run install.sh setup script
+npm run setup          # Run install.sh setup script
 npm run setup-hooks    # Install git pre-commit hooks
 
 # Health & Validation

@@ -21,10 +21,9 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
     
     - name: Install dependencies
-      run: npm install
+      run: npm ci --ignore-scripts || npm install --ignore-scripts
     
     - name: Run validation
       run: npm run validate
@@ -79,7 +78,7 @@ jobs:
         node-version: '18'
     
     - name: Install dependencies
-      run: npm install
+      run: npm ci --ignore-scripts || npm install --ignore-scripts
     
     - name: Run health check
       run: npm run doctor

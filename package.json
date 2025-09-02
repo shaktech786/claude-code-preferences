@@ -4,7 +4,7 @@
   "description": "Centralized Claude Code preferences, settings, and tools for syncing across devices and projects",
   "main": "install.sh",
   "scripts": {
-    "install": "./install.sh",
+    "setup": "./install.sh",
     "sync": "./scripts/project-sync.sh",
     "check-teams": "./scripts/check-ai-teams.sh",
     "screenshot": "./scripts/take-screenshot.sh",
