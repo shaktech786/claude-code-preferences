@@ -1,0 +1,99 @@
+name: Validate Claude Code Preferences
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  schedule:
+    # Run validation daily at 9 AM UTC
+    - cron: '0 9 * * *'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run validation
+      run: npm run validate
+    
+    - name: Check script permissions
+      run: |
+        echo "Checking script permissions..."
+        find scripts/ -name "*.sh" -not -perm -u+x -exec echo "Not executable: {}" \; -exec ls -l {} \;
+        find hooks/ -name "*" -not -perm -u+x -exec echo "Not executable: {}" \; -exec ls -l {} \;
+    
+    - name: Validate JSON files
+      run: |
+        echo "Validating JSON files..."
+        for file in configs/*.json templates/*.json; do
+          if [ -f "$file" ]; then
+            echo "Validating: $file"
+            node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8')); console.log('✓ Valid JSON: $file')"
+          fi
+        done
+    
+    - name: Check for secrets
+      run: |
+        echo "Scanning for potential secrets..."
+        if grep -r -i "password\|secret\|key\|token" --include="*.md" --include="*.json" --include="*.sh" . | grep -v "example\|template\|placeholder"; then
+          echo "⚠️ Potential secrets found in files above"
+          echo "Please review and ensure no actual secrets are committed"
+        else
+          echo "✓ No secrets detected"
+        fi
+    
+    - name: Run shellcheck (if available)
+      run: |
+        if command -v shellcheck >/dev/null 2>&1; then
+          echo "Running shellcheck..."
+          shellcheck scripts/*.sh hooks/*
+        else
+          echo "shellcheck not available, skipping shell script analysis"
+        fi
+      continue-on-error: true
+
+  health-check:
+    runs-on: ubuntu-latest
+    needs: validate
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Run health check
+      run: npm run doctor
+      continue-on-error: true
+    
+    - name: Generate summary
+      run: |
+        echo "## 🩺 Health Check Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Validation completed for Claude Code Preferences repository." >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Files Checked:" >> $GITHUB_STEP_SUMMARY
+        echo "- Configuration files in \`configs/\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Template files in \`templates/\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Shell scripts in \`scripts/\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Git hooks in \`hooks/\`" >> $GITHUB_STEP_SUMMARY
+        echo "- Main \`CLAUDE.md\` file" >> $GITHUB_STEP_SUMMARY
