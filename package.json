@@ -11,11 +11,15 @@
     "send-email": "./scripts/send-email.sh",
     "message-claude": "./scripts/claude-messenger.sh",
     "test-models": "./scripts/multi-model-test.sh",
+    "generate": "./scripts/template-generator.sh",
     "validate": "node scripts/validate-config.js",
     "test": "npm run validate && npm run lint",
-    "lint": "shellcheck scripts/*.sh hooks/*",
+    "lint": "shellcheck scripts/*.sh hooks/* 2>/dev/null || echo 'shellcheck not installed - skipping'",
     "setup-hooks": "ln -sf ../../hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
-    "doctor": "node scripts/doctor.js"
+    "doctor": "node scripts/doctor.js",
+    "health": "npm run doctor",
+    "fix-permissions": "chmod +x scripts/*.sh hooks/*",
+    "update-all": "npm run sync && npm run validate && npm run doctor"
   },
   "keywords": [
     "claude-code",
