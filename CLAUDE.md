@@ -42,6 +42,9 @@ python3 /Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/claude-monitor
 
 # For quick status
 python3 /Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/claude-monitoring-mcp-client.py --quick
+
+# Send messages to running Claude instances
+/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/send-claude-message.sh "message" [window] [pane]
 ```
 
 ### Never Again:
@@ -49,12 +52,14 @@ python3 /Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/claude-monitor
 - ❌ Assume progress without git commit verification
 - ❌ Let AI teams waste tokens on approval prompts
 - ❌ Give false progress reports
+- ❌ Send tmux messages without proper timing (0.5s delay required)
 
 ### Always Verify:
 - ✅ Check actual git commits (the TRUTH of progress)
 - ✅ Detect stuck approval prompts
 - ✅ Verify token waste vs actual work
 - ✅ Use MCP monitoring data for all status reports
+- ✅ Use send-claude-message.sh for reliable tmux communication
 
 ### MCP Monitoring Features:
 - Real-time git progress verification
@@ -62,6 +67,13 @@ python3 /Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/claude-monitor
 - Token waste alerts via email
 - Emergency intervention capabilities
 - 100% accurate status reporting
+- 50+ stuck pattern detection and auto-recovery
+
+### Git Discipline Protocol:
+- **MANDATORY**: Commits every 30 minutes maximum
+- Feature branch workflow with stable tags
+- Meaningful commit messages with context
+- Emergency recovery procedures for stuck agents
 
 This prevents the catastrophic 5-day token waste incident from EVER happening again.
 
@@ -75,12 +87,26 @@ This prevents the catastrophic 5-day token waste incident from EVER happening ag
 ```bash
 npm run screenshot <url> <name>
 npm run portfolio:screenshots
+npm run scrape <url>              # Extract content
+npm run scrape:json <url>         # Extract as JSON
 ```
 
 2. **Direct Puppeteer Execution** (works anywhere):
 ```bash
 node /Users/shakeelbhamani/projects/personal/shaktech-website/scripts/capture-screenshot.js <url> <name>
+node /Users/shakeelbhamani/projects/personal/shaktech-website/scripts/web-scraper.js <url> [json]
 ```
+
+3. **Convenience Script** (from claude-code-preferences):
+```bash
+/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/take-screenshot.sh <url> <name>
+```
+
+### Features:
+- **Quality**: 2x device scale factor for retina quality
+- **Multiple Formats**: Full-page, viewport, and mobile screenshots
+- **Metadata**: Auto-generates metadata.json with capture details
+- **Global Access**: Can be used from any project location
 
 ### When User Asks For:
 - "Take a screenshot of..." → Use the screenshot tool
@@ -118,11 +144,68 @@ Always use the email tool when asked to send an email:
 ## 📍 Project Paths & Locations
 
 ### Key Project Directories:
-- Personal Projects: `/Users/shakeelbhamani/projects/personal/`
-- Tmux Orchestrator: `/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/`
-- ShakTech Website: `/Users/shakeelbhamani/projects/personal/shaktech-website/`
-- Email Sender: `/Users/shakeelbhamani/projects/personal/email-sender/`
-- Claude Preferences: `/Users/shakeelbhamani/projects/personal/claude-code-preferences/`
+- **Personal Projects**: `/Users/shakeelbhamani/projects/personal/`
+- **AI Stock Researcher**: `/Users/shakeelbhamani/projects/personal/ai-stock-researcher/`
+- **Claude Preferences**: `/Users/shakeelbhamani/projects/personal/claude-code-preferences/`
+- **Email Sender**: `/Users/shakeelbhamani/projects/personal/email-sender/`
+- **FRS Image Generator**: `/Users/shakeelbhamani/projects/personal/frs-image-generator/`
+- **Memory Bank**: `/Users/shakeelbhamani/projects/personal/memory-bank/`
+- **Reels Editor**: `/Users/shakeelbhamani/projects/personal/reels-editor/`
+- **ShakGPT**: `/Users/shakeelbhamani/projects/personal/shakgpt/`
+- **ShakTech Website**: `/Users/shakeelbhamani/projects/personal/shaktech-website/`
+- **Skystation Industries**: `/Users/shakeelbhamani/projects/personal/skystation-industries/`
+- **Tmux Orchestrator**: `/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/`
+- **Virtual AI Team Manager**: `/Users/shakeelbhamani/projects/personal/virtual-ai-team-manager/`
+
+## 🤖 Multi-LLM Configuration Strategy
+
+### Quality-First Approach:
+- **GPT-4o**: Primary for complex analysis and reasoning
+- **Claude Opus/Sonnet**: Deep reasoning, code review, architecture decisions
+- **Claude Haiku**: Conversations, quick responses, cost optimization
+- **Groq/Llama**: Fast inference for development tasks
+- **OpenRouter**: Model comparison and fallback options
+
+### Model Selection Guidelines:
+- **Analysis & Research**: GPT-4o or Claude Opus
+- **Code Generation**: Claude Sonnet or GPT-4o
+- **Quick Responses**: Claude Haiku or Groq
+- **Creative Writing**: GPT-4o or Claude Opus
+- **Cost-Sensitive Tasks**: Claude Haiku or local models
+
+### Fallback Systems:
+- Always implement graceful degradation when AI fails
+- Have backup models configured for critical operations
+- Monitor usage costs and switch models based on budget
+- Test different models for specific use cases
+
+## 🧪 Advanced Testing Strategies
+
+### Testing Framework Patterns:
+```bash
+# Vitest (Modern, fast)
+npm run test                    # Run all tests
+npm run test:ui                # Visual test interface
+npm run test:coverage          # Coverage reports
+npm run test:watch            # Watch mode
+
+# Playwright (E2E)
+npm run test:e2e              # End-to-end tests
+npm run test:e2e:debug        # Debug mode
+npm run test:e2e:headed       # Headed browser mode
+
+# Specialized Tests
+npm run test:midas-v2         # AI agent integration tests
+npm run test:integration      # Integration test suite
+npm run build:analyze         # Bundle analysis
+```
+
+### Testing Best Practices:
+- **Integration Tests**: Test AI agent workflows end-to-end
+- **Component Tests**: Individual component behavior
+- **E2E Tests**: Full user journey testing
+- **Performance Tests**: Load testing and benchmarking
+- **AI Model Tests**: Compare outputs across different models
 
 ## 🚀 Tool Usage Policy
 
@@ -136,12 +219,18 @@ Always use the email tool when asked to send an email:
 - Batch multiple tool calls together for optimal performance
 - Run multiple bash commands in parallel when possible
 
+### Development Commands:
+- **Standard Next.js**: `npm run dev --turbopack` (faster builds)
+- **Build**: `npm run build` with timeout handling
+- **Linting**: Always run before commits
+- **Testing**: Run appropriate test suites after changes
+
 ## ⚙️ Environment Information
 
 - Platform: darwin (macOS)
 - Working Directory: Variable (check with pwd)
 - Today's Date: Check system date
-- Model: Claude Opus 4.1
+- Model: Claude Sonnet 4 (primary), with multi-LLM fallbacks available
 
 ## 🎯 Important Reminders
 

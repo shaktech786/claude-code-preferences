@@ -1,11 +1,17 @@
 {
   "projectPaths": {
     "personal": "/Users/shakeelbhamani/projects/personal",
-    "tmuxOrchestrator": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator",
-    "shaktechWebsite": "/Users/shakeelbhamani/projects/personal/shaktech-website",
-    "emailSender": "/Users/shakeelbhamani/projects/personal/email-sender",
+    "aiStockResearcher": "/Users/shakeelbhamani/projects/personal/ai-stock-researcher",
     "claudePreferences": "/Users/shakeelbhamani/projects/personal/claude-code-preferences",
-    "aiStockResearcher": "/Users/shakeelbhamani/projects/personal/ai-stock-researcher"
+    "emailSender": "/Users/shakeelbhamani/projects/personal/email-sender",
+    "frsImageGenerator": "/Users/shakeelbhamani/projects/personal/frs-image-generator",
+    "memoryBank": "/Users/shakeelbhamani/projects/personal/memory-bank",
+    "reelsEditor": "/Users/shakeelbhamani/projects/personal/reels-editor",
+    "shakgpt": "/Users/shakeelbhamani/projects/personal/shakgpt",
+    "shaktechWebsite": "/Users/shakeelbhamani/projects/personal/shaktech-website",
+    "skystationIndustries": "/Users/shakeelbhamani/projects/personal/skystation-industries",
+    "tmuxOrchestrator": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator",
+    "virtualAiTeamManager": "/Users/shakeelbhamani/projects/personal/virtual-ai-team-manager"
   },
   "tools": {
     "monitoring": {
@@ -26,6 +32,19 @@
     "email": {
       "projectDir": "/Users/shakeelbhamani/projects/personal/email-sender",
       "description": "Email sending utility for all projects"
+    },
+    "messaging": {
+      "script": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator/send-claude-message.sh",
+      "wrapper": "/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/claude-messenger.sh",
+      "description": "Send messages to Claude instances with proper timing"
+    },
+    "multiModel": {
+      "testScript": "/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/multi-model-test.sh",
+      "description": "Test and compare responses across different LLM models"
+    },
+    "sync": {
+      "script": "/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/project-sync.sh",
+      "description": "Sync preferences and pull latest changes across all projects"
     }
   },
   "globalSettings": {
