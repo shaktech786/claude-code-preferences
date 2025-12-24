@@ -1,0 +1,172 @@
+{
+  "subAgents": {
+    "email-sender": {
+      "description": "Handles all email sending functionality with beautiful HTML templates",
+      "projectPath": "/Users/shakeelbhamani/projects/personal/email-sender",
+      "capabilities": [
+        "markdown-to-html-conversion",
+        "automated-email-sending",
+        "template-management",
+        "gmail-integration"
+      ],
+      "commands": {
+        "send": "npm run emailme",
+        "test": "npm run test"
+      },
+      "configFiles": [".env", "package.json"],
+      "active": true,
+      "priority": "high"
+    },
+    "fullstack-production-engineer": {
+      "description": "Elite full-stack production engineer specializing in Next.js, Vercel, and modern web development",
+      "capabilities": [
+        "nextjs-14-development",
+        "vercel-deployment",
+        "typescript-development",
+        "database-optimization",
+        "performance-monitoring",
+        "production-deployment",
+        "testing-implementation",
+        "security-best-practices"
+      ],
+      "specializations": {
+        "frontend": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Radix UI", "Framer Motion"],
+        "backend": ["Node.js", "Express", "tRPC", "GraphQL", "REST APIs", "WebSockets"],
+        "databases": ["PostgreSQL", "MongoDB", "Redis", "Prisma ORM", "Drizzle"],
+        "infrastructure": ["Vercel", "Edge functions", "CDN optimization", "Docker", "CI/CD"],
+        "testing": ["Jest", "React Testing Library", "Playwright", "Vitest"]
+      },
+      "workflow": [
+        "analyze-codebase-thoroughly",
+        "design-production-ready-solutions",
+        "implement-with-error-handling",
+        "add-comprehensive-testing",
+        "optimize-performance",
+        "deploy-to-production"
+      ],
+      "active": true,
+      "priority": "critical"
+    },
+    "ai-team-monitor": {
+      "description": "Monitors AI teams using MCP protocol with real-time progress tracking",
+      "projectPath": "/Users/shakeelbhamani/projects/personal/Tmux-Orchestrator",
+      "capabilities": [
+        "real-time-monitoring",
+        "git-progress-verification",
+        "stuck-prompt-detection",
+        "token-waste-prevention",
+        "automated-intervention"
+      ],
+      "commands": {
+        "monitor": "python3 claude-monitoring-mcp-client.py",
+        "quick": "python3 claude-monitoring-mcp-client.py --quick",
+        "message": "send-claude-message.sh"
+      },
+      "protocols": ["MCP", "tmux", "git"],
+      "active": true,
+      "priority": "critical"
+    },
+    "screenshot-scraper": {
+      "description": "Advanced web screenshot and scraping capabilities with multiple formats",
+      "projectPath": "/Users/shakeelbhamani/projects/personal/shaktech-website",
+      "capabilities": [
+        "multi-format-screenshots",
+        "web-content-scraping",
+        "metadata-generation",
+        "mobile-responsive-capture",
+        "automated-portfolio-updates"
+      ],
+      "commands": {
+        "screenshot": "npm run screenshot",
+        "scrape": "npm run scrape",
+        "portfolio": "npm run portfolio:screenshots"
+      },
+      "outputFormats": ["full-page", "viewport", "mobile", "metadata-json"],
+      "active": true,
+      "priority": "high"
+    },
+    "multi-llm-tester": {
+      "description": "Tests and compares responses across multiple LLM models",
+      "capabilities": [
+        "model-comparison",
+        "quality-assessment",
+        "cost-optimization",
+        "performance-benchmarking"
+      ],
+      "supportedModels": [
+        "gpt-4o",
+        "claude-opus",
+        "claude-sonnet",
+        "claude-haiku",
+        "groq-llama",
+        "openrouter-models"
+      ],
+      "commands": {
+        "test": "/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/multi-model-test.sh",
+        "compare": "npm run test-models"
+      },
+      "active": true,
+      "priority": "medium"
+    },
+    "global-command-system": {
+      "description": "Universal learning and improvement system working with any project type",
+      "projectPath": "/Users/shakeelbhamani/.claude/commands",
+      "capabilities": [
+        "universal-project-learning",
+        "intelligent-code-improvements",
+        "automated-testing",
+        "screenshot-integration",
+        "git-workflow-automation",
+        "multi-language-support"
+      ],
+      "commands": {
+        "learn": "node /Users/shakeelbhamani/.claude/commands/learn.js",
+        "improve": "node /Users/shakeelbhamani/.claude/commands/improve.js"
+      },
+      "supportedProjectTypes": [
+        "nodejs", "python", "go", "rust", "nextjs", "react", "vue", "express", "django", "flask", "fastapi"
+      ],
+      "features": {
+        "learningCycles": "1-10 configurable cycles",
+        "visualLearning": "screenshots and project analysis",
+        "testIntegration": "runs tests before/after improvements",
+        "smartCommits": "meaningful git commits after successful cycles",
+        "projectReports": "comprehensive analysis and insights"
+      },
+      "active": true,
+      "priority": "critical"
+    }
+  },
+  "integrationConfig": {
+    "communicationProtocols": ["MCP", "HTTP", "CLI", "tmux"],
+    "errorHandling": {
+      "retryAttempts": 3,
+      "fallbackMethods": ["email-notification", "manual-intervention"],
+      "logLevel": "info"
+    },
+    "monitoring": {
+      "healthChecks": true,
+      "performanceMetrics": true,
+      "usageAnalytics": true
+    },
+    "security": {
+      "validateInputs": true,
+      "sanitizeOutputs": true,
+      "accessControl": "restricted"
+    }
+  },
+  "workflows": {
+    "development": {
+      "sequence": ["fullstack-production-engineer", "ai-team-monitor", "global-command-system"],
+      "description": "Complete development workflow with monitoring and learning"
+    },
+    "content-creation": {
+      "sequence": ["screenshot-scraper", "email-sender"],
+      "description": "Content capture and communication workflow"
+    },
+    "quality-assurance": {
+      "sequence": ["multi-llm-tester", "global-command-system", "ai-team-monitor"],
+      "description": "Multi-model testing and quality verification"
+    }
+  }
+}

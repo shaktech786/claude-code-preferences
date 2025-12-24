@@ -45,6 +45,15 @@
     "sync": {
       "script": "/Users/shakeelbhamani/projects/personal/claude-code-preferences/scripts/project-sync.sh",
       "description": "Sync preferences and pull latest changes across all projects"
+    },
+    "globalCommands": {
+      "learnScript": "/Users/shakeelbhamani/.claude/commands/learn.js",
+      "improveScript": "/Users/shakeelbhamani/.claude/commands/improve.js",
+      "commands": {
+        "learn": "node /Users/shakeelbhamani/.claude/commands/learn.js",
+        "improve": "node /Users/shakeelbhamani/.claude/commands/improve.js"
+      },
+      "description": "Universal learning and improvement system for any project type"
     }
   },
   "globalSettings": {

@@ -7,14 +7,27 @@
     "setup": "./install.sh",
     "sync": "./scripts/project-sync.sh",
     "check-teams": "./scripts/check-ai-teams.sh",
+    "monitor": "node scripts/enhanced-monitoring.js",
+    "monitor:quick": "node scripts/enhanced-monitoring.js quick",
+    "monitor:git": "node scripts/enhanced-monitoring.js git",
+    "monitor:stuck": "node scripts/enhanced-monitoring.js stuck",
     "screenshot": "./scripts/take-screenshot.sh",
     "send-email": "./scripts/send-email.sh",
+    "emailme": "node scripts/quick-email.js",
     "message-claude": "./scripts/claude-messenger.sh",
     "test-models": "./scripts/multi-model-test.sh",
     "generate": "./scripts/template-generator.sh",
     "validate": "node scripts/validate-config.js",
-    "test": "npm run validate && npm run lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:all": "npm run test && npm run test:e2e",
     "lint": "shellcheck scripts/*.sh hooks/* 2>/dev/null || echo 'shellcheck not installed - skipping'",
+    "typecheck": "tsc --noEmit",
     "setup-hooks": "ln -sf ../../hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
     "doctor": "node scripts/doctor.js",
     "health": "npm run doctor",
@@ -34,7 +47,19 @@
     "analytics": "./scripts/usage-analytics.sh",
     "optimize": "./scripts/optimization-engine.sh",
     "benchmark": "./scripts/optimization-engine.sh benchmark",
-    "analyze": "./scripts/optimization-engine.sh analyze"
+    "analyze": "./scripts/optimization-engine.sh analyze",
+    "learn": "node /Users/shakeelbhamani/.claude/commands/learn.js 1",
+    "learn:cycles": "node /Users/shakeelbhamani/.claude/commands/learn.js",
+    "improve": "node /Users/shakeelbhamani/.claude/commands/improve.js 1",
+    "improve:cycles": "node /Users/shakeelbhamani/.claude/commands/improve.js",
+    "sub-agents": "npm run validate-sub-agents",
+    "validate-sub-agents": "node scripts/validate-sub-agents.js",
+    "manage": "npm run dev",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build-ui": "npm run build",
+    "serve-ui": "npm run start"
   },
   "keywords": [
     "claude-code",
@@ -56,8 +81,22 @@
     "url": "https://github.com/shaktech786/claude-code-preferences/issues"
   },
   "homepage": "https://github.com/shaktech786/claude-code-preferences#readme",
-  "devDependencies": {},
-  "dependencies": {},
+  "dependencies": {
+    "@headlessui/react": "^2.2.8",
+    "@heroicons/react": "^2.2.0",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "autoprefixer": "^10.4.21",
+    "dotenv": "^17.2.2",
+    "marked": "^15.0.5",
+    "next": "^15.5.3",
+    "nodemailer": "^7.0.5",
+    "postcss": "^8.5.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.2"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
@@ -74,5 +113,13 @@
     "hooks/",
     "install.sh",
     "README.md"
-  ]
+  ],
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@vitejs/plugin-react": "^5.0.3",
+    "jsdom": "^27.0.0",
+    "vitest": "^3.2.4"
+  }
 }

@@ -24,10 +24,11 @@ This repository serves as a single source of truth for:
 - **Git Discipline**: 30-minute commit protocol with automated enforcement
 
 ### 🛠️ **Production-Ready Tools**
-- **15+ NPM Scripts**: Convenient shortcuts for all operations
-- **8 Utility Scripts**: AI monitoring, screenshots, email, templates
+- **16+ NPM Scripts**: Convenient shortcuts for all operations
+- **9 Utility Scripts**: AI monitoring, screenshots, email, templates
 - **4 Project Templates**: Next.js, Python, Node.js, generic projects
 - **50+ Tool Permissions**: Comprehensive command allowlists
+- **Email Tool**: Send beautifully formatted HTML emails with Markdown support
 
 ### 🔐 **Quality Assurance**
 - **Automated Validation**: JSON, paths, permissions, security checks
@@ -52,12 +53,13 @@ claude-code-preferences/
 ├── 📜 CHANGELOG.md                 # Version history
 ├── ⚖️ LICENSE                      # MIT License
 ├── 🔧 .editorconfig                # Code formatting rules
-├── 📂 scripts/                     # Utility scripts (8 scripts)
+├── 📂 scripts/                     # Utility scripts (9 scripts)
 │   ├── check-ai-teams.sh          # Monitor AI team status
 │   ├── claude-messenger.sh         # Send messages to Claude instances
 │   ├── doctor.js                   # Comprehensive health check
 │   ├── multi-model-test.sh         # Test multiple LLM models
 │   ├── project-sync.sh             # Sync across all projects
+│   ├── quick-email.js              # Quick formatted email tool (emailme)
 │   ├── send-email.sh               # Email automation
 │   ├── take-screenshot.sh          # Website screenshots
 │   ├── template-generator.sh       # Generate new project templates
@@ -258,12 +260,44 @@ alias claude-email='$CLAUDE_PREFS/scripts/send-email.sh'
 alias claude-doctor='$CLAUDE_PREFS/scripts/doctor.js'
 ```
 
+## 📧 Email Tool
+
+The quick-email tool (`emailme`) allows you to send beautifully formatted HTML emails directly from the command line.
+
+### Setup
+1. Copy `.env.example` to `.env` and add your Gmail credentials:
+```bash
+GMAIL_USER=your-email@gmail.com
+GMAIL_APP_PASSWORD=your-app-password
+```
+
+2. Use the email tool:
+```bash
+# Via npm script
+npm run emailme "Your message here"
+
+# Via alias (after setting up in .zshrc)
+emailme "# Task Complete
+
+**All tests passing!**
+
+- Fixed authentication bug
+- Updated dependencies"
+```
+
+### Features
+- Markdown to HTML conversion
+- Beautiful gradient email template
+- Code syntax highlighting
+- Automatic timestamp and subject generation
+- Plain text fallback for compatibility
+
 ## 🔗 Dependencies
 
 This preferences system integrates with:
 - **Tmux-Orchestrator**: For AI team monitoring
 - **shaktech-website**: For screenshot capabilities
-- **email-sender**: For email functionality
+- **Email Tool**: Built-in formatted email functionality with Markdown support
 
 Ensure these projects are installed in their expected locations or update the paths in `configs/project-paths.json`.
 

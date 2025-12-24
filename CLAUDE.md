@@ -141,6 +141,36 @@ Always use the email tool when asked to send an email:
 - Never assume specific test frameworks
 - Ask for test commands if not found and suggest writing to CLAUDE.md
 
+## 📧 Email Tool - Quick Formatted Emails
+
+### Send beautifully formatted HTML emails with Markdown support:
+```bash
+# Use the emailme alias (defined in .zshrc)
+emailme "Your message content"
+
+# Or use from claude-code-preferences
+cd /Users/shakeelbhamani/projects/personal/claude-code-preferences
+npm run emailme "# Task Complete
+
+**All tests passing!**
+
+- Fixed authentication bug  
+- Updated dependencies
+- Deployed to production"
+```
+
+### Features:
+- Automatic Markdown to HTML conversion
+- Beautiful gradient email template
+- Code syntax highlighting in emails
+- Sends to shakeel.bhamani@gmail.com automatically
+- Smart subject line generation from content
+
+### The /improve command now uses this email tool for:
+- Cycle completion reports
+- Blocker notifications
+- Progress updates
+
 ## 📍 Project Paths & Locations
 
 ### Key Project Directories:
